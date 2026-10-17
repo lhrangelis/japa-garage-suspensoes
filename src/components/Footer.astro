@@ -1,0 +1,88 @@
+---
+import { Image } from 'astro:assets';
+import logo from '../assets/logo.png';
+import Icon from './Icon.astro';
+import { site } from '../data/site';
+
+const year = new Date().getFullYear();
+---
+
+<footer class="footer">
+  <div class="container footer-inner">
+    <div class="footer-brand">
+      <Image src={logo} alt="" width={44} height={44} densities={[1, 2]} class="footer-logo" />
+      <div class="footer-brand-text">
+        <span class="footer-name">{site.name}</span>
+        <span class="footer-tagline">Suspensão a ar, rosca e fixa · Revendedor RCS Air Components</span>
+      </div>
+    </div>
+    <div class="footer-links">
+      <a class="text-link" href={site.whatsapp} target="_blank" rel="noopener noreferrer">
+        <Icon name="whatsapp" size={18} />
+        {site.phone.display}
+      </a>
+      <a class="text-link" href={site.instagram.url} target="_blank" rel="noopener noreferrer">
+        <Icon name="instagram" size={18} />
+        {site.instagram.handle}
+      </a>
+      <a class="text-link" href={site.tiktok} target="_blank" rel="noopener noreferrer">
+        <Icon name="tiktok" size={18} />
+        TikTok
+      </a>
+      <span class="footer-copy">© {year} {site.name}</span>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    background: var(--bg);
+  }
+  .footer-inner {
+    padding-block: 48px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+  }
+  .footer-brand {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .footer-logo {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+  }
+  .footer-brand-text {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  .footer-name {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 20px;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+  }
+  .footer-tagline,
+  .footer-copy {
+    font-size: 14px;
+    color: var(--text-faint);
+  }
+  .footer-links {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px 24px;
+    font-size: 15px;
+  }
+  .footer-links .text-link {
+    gap: 8px;
+    color: var(--text-muted);
+    font-weight: 400;
+  }
+</style>

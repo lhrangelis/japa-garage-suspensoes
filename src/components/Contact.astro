@@ -1,0 +1,105 @@
+---
+import Button from './Button.astro';
+import Icon from './Icon.astro';
+import { site } from '../data/site';
+---
+
+<section id="contato" class="contact">
+  <div class="container contact-inner">
+    <div class="contact-copy">
+      <h2 class="contact-title">Bora deixar o seu no chão?</h2>
+      <p class="contact-text">Chama a Japa Garage no WhatsApp e conta o que você quer fazer no seu carro.</p>
+    </div>
+    <div class="contact-actions">
+      <Button href={site.whatsapp} variant="light" size="xl" icon="whatsapp" block>Chamar no WhatsApp</Button>
+      <div class="contact-links">
+        <a class="contact-phone" href={site.phone.tel}>
+          <Icon name="phone" strokeWidth={2} />
+          {site.phone.display}
+        </a>
+        <a class="contact-social" href={site.instagram.url} target="_blank" rel="noopener noreferrer">
+          <Icon name="instagram" />
+          {site.instagram.handle}
+        </a>
+        <a class="contact-social" href={site.tiktok} target="_blank" rel="noopener noreferrer">
+          <Icon name="tiktok" />
+          TikTok
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .contact {
+    background: var(--red);
+    color: #fff;
+  }
+  .contact-inner {
+    padding-block: 104px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 48px;
+  }
+  .contact-copy {
+    flex: 1 1 520px;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  .contact-title {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: clamp(52px, 7vw, 96px);
+    line-height: 0.9;
+    text-transform: uppercase;
+    text-wrap: balance;
+  }
+  .contact-text {
+    max-width: 520px;
+    font-size: 19px;
+    text-wrap: pretty;
+  }
+  .contact-actions {
+    flex: 0 1 400px;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .contact-links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 12px 24px;
+  }
+  .contact-links a {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    min-height: 44px;
+    color: #fff;
+    text-decoration: none;
+  }
+  .contact-links a:hover {
+    opacity: 0.85;
+  }
+  .contact-phone {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 26px;
+    letter-spacing: 0.02em;
+  }
+  .contact-social {
+    font-weight: 600;
+    font-size: 17px;
+  }
+  @media (max-width: 600px) {
+    .contact-inner {
+      padding-block: 80px;
+    }
+  }
+</style>

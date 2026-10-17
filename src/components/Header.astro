@@ -1,0 +1,95 @@
+---
+import { Image } from 'astro:assets';
+import logo from '../assets/logo.png';
+import Button from './Button.astro';
+import { navLinks, site } from '../data/site';
+---
+
+<header class="header">
+  <div class="container header-inner">
+    <a href="#topo" class="brand">
+      <Image src={logo} alt="Logo Japa Garage Suspensões" width={52} height={52} densities={[1, 2]} class="brand-logo" loading="eager" />
+      <span class="brand-text">
+        <span class="brand-name">Japa Garage</span>
+        <span class="brand-sub">Suspensões</span>
+      </span>
+    </a>
+    <nav class="nav-links" aria-label="Navegação principal">
+      {navLinks.map((link) => <a class="nav-link" href={link.href}>{link.label}</a>)}
+    </nav>
+    <Button href={site.whatsapp} size="sm" icon="whatsapp">Orçamento</Button>
+  </div>
+</header>
+
+<style>
+  .header {
+    border-bottom: 1px solid var(--border);
+    background: var(--bg);
+  }
+  .header-inner {
+    padding-block: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+  }
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+    color: var(--text);
+  }
+  .brand:hover {
+    color: var(--text);
+  }
+  .brand-logo {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+  }
+  .brand-text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1;
+  }
+  .brand-name {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 24px;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+  }
+  .brand-sub {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--text-faint);
+    margin-top: 5px;
+  }
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 36px;
+    font-size: 15px;
+    font-weight: 500;
+  }
+  .nav-link {
+    color: var(--text-muted);
+    text-decoration: none;
+  }
+  .nav-link:hover {
+    color: var(--text);
+  }
+  @media (max-width: 880px) {
+    .nav-links {
+      display: none;
+    }
+  }
+  @media (max-width: 420px) {
+    .brand-text {
+      display: none;
+    }
+  }
+</style>

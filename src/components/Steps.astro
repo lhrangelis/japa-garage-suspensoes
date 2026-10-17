@@ -1,0 +1,100 @@
+---
+import Icon from './Icon.astro';
+import { site } from '../data/site';
+
+const steps = [
+  {
+    title: 'Chame no WhatsApp',
+    text: 'Mande o modelo e o ano do carro e conte o que você tem em mente: ar, rosca ou fixa.',
+    withContact: true,
+  },
+  {
+    title: 'Orçamento sob medida',
+    text: 'Indicamos o sistema e os componentes certos para o seu carro, com orçamento detalhado antes de começar.',
+  },
+  {
+    title: 'Instalação e acerto',
+    text: 'O carro é instalado e ajustado na oficina e sai pronto para rodar na altura que você queria.',
+  },
+];
+---
+
+<section id="como-funciona" class="steps">
+  <div class="container steps-inner">
+    <div class="steps-head">
+      <span class="eyebrow">Como funciona</span>
+      <h2 class="section-title">Do primeiro contato ao carro no chão.</h2>
+    </div>
+    <ol class="steps-list">
+      {
+        steps.map((step, i) => (
+          <li class="step">
+            <span class="step-number">{String(i + 1).padStart(2, '0')}</span>
+            <h3 class="step-title">{step.title}</h3>
+            <p class="muted">{step.text}</p>
+            {step.withContact && (
+              <a class="text-link step-link" href={site.whatsapp} target="_blank" rel="noopener noreferrer">
+                <Icon name="whatsapp" />
+                {site.phone.display}
+              </a>
+            )}
+          </li>
+        ))
+      }
+    </ol>
+  </div>
+</section>
+
+<style>
+  .steps {
+    padding-block: 120px;
+  }
+  .steps-inner {
+    display: flex;
+    flex-direction: column;
+    gap: 64px;
+  }
+  .steps-head {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    max-width: 720px;
+  }
+  .steps-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
+    gap: 40px;
+  }
+  .step {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    padding-top: 28px;
+    border-top: 1px solid var(--border-step);
+  }
+  .step-number {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 64px;
+    line-height: 1;
+    color: var(--red);
+  }
+  .step-title {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 28px;
+    text-transform: uppercase;
+  }
+  .step-link {
+    align-self: flex-start;
+    color: var(--red-bright);
+  }
+  @media (max-width: 600px) {
+    .steps {
+      padding-block: 80px;
+    }
+  }
+</style>

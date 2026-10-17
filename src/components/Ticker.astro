@@ -1,0 +1,42 @@
+---
+const items = ['Suspensão a ar', 'Suspensão rosca', 'Suspensão fixa', 'Revenda RCS Air Components'];
+---
+
+<div class="ticker">
+  <div class="container ticker-inner">
+    {
+      items.map((item, i) => (
+        <>
+          {i > 0 && <span aria-hidden="true" class="ticker-dot" />}
+          <span>{item}</span>
+        </>
+      ))
+    }
+  </div>
+</div>
+
+<style>
+  .ticker {
+    background: var(--red);
+    color: #fff;
+  }
+  .ticker-inner {
+    padding-block: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px 32px;
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 22px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+  .ticker-dot {
+    width: 6px;
+    height: 6px;
+    background: var(--bg);
+    display: block;
+  }
+</style>

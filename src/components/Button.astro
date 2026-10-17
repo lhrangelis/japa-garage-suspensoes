@@ -1,0 +1,97 @@
+---
+import Icon, { type IconName } from './Icon.astro';
+
+interface Props {
+  href: string;
+  variant?: 'primary' | 'ghost' | 'light';
+  size?: 'sm' | 'md' | 'lg' | 'xl';
+  icon?: IconName;
+  block?: boolean;
+}
+
+const { href, variant = 'primary', size = 'md', icon, block = false } = Astro.props;
+const iconSize = { sm: 18, md: 20, lg: 20, xl: 22 }[size];
+const isExternal = href.startsWith('http');
+---
+
+<a
+  class:list={['btn', `btn-${variant}`, `btn-${size}`, { 'btn-block': block }]}
+  href={href}
+  {...isExternal && { target: '_blank', rel: 'noopener noreferrer' }}
+>
+  {icon && <Icon name={icon} size={iconSize} />}
+  <slot />
+</a>
+
+<style>
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+    font-family: var(--font-display);
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    border-radius: 2px;
+    transition:
+      background-color 0.15s ease,
+      border-color 0.15s ease;
+  }
+
+  .btn-block {
+    display: flex;
+    justify-content: center;
+  }
+
+  .btn-sm {
+    gap: 10px;
+    min-height: 44px;
+    padding: 0 22px;
+    font-size: 18px;
+  }
+  .btn-md {
+    min-height: 52px;
+    padding: 0 26px;
+    font-size: 19px;
+  }
+  .btn-lg {
+    min-height: 56px;
+    padding: 0 30px;
+    font-size: 20px;
+  }
+  .btn-xl {
+    min-height: 64px;
+    padding: 0 28px;
+    font-size: 22px;
+    font-weight: 800;
+  }
+
+  .btn-primary {
+    background: var(--red);
+    color: #fff;
+  }
+  .btn-primary:hover {
+    background: var(--red-dark);
+    color: #fff;
+  }
+
+  .btn-ghost {
+    border: 1px solid var(--border-strong);
+    color: var(--text);
+  }
+  .btn-ghost:hover {
+    border-color: var(--text);
+    background: rgba(244, 243, 241, 0.06);
+    color: var(--text);
+  }
+
+  .btn-light {
+    background: var(--text);
+    color: var(--bg);
+  }
+  .btn-light:hover {
+    background: #fff;
+    color: var(--bg);
+  }
+</style>

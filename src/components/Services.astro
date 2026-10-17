@@ -1,0 +1,197 @@
+---
+interface Service {
+  title: string;
+  description: string;
+  features: string[];
+  icon: 'air' | 'coilover' | 'fixed';
+}
+
+const services: Service[] = [
+  {
+    title: 'Suspensão a ar',
+    description:
+      'Altura ajustável a qualquer momento: baixa para parar e expor, alta para encarar lombada, valeta e rampa de garagem.',
+    features: ['Kits completos e componentes', 'Bolsas, compressor e gerenciamento', 'Instalação e acerto de altura'],
+    icon: 'air',
+  },
+  {
+    title: 'Suspensão rosca',
+    description:
+      'Regulagem de altura na própria rosca do amortecedor. Rebaixamento preciso, com o carro firme e estável para rodar.',
+    features: ['Ajuste fino de altura', 'Visual baixo com boa dirigibilidade', 'Instalação e regulagem'],
+    icon: 'coilover',
+  },
+  {
+    title: 'Suspensão fixa',
+    description:
+      'Molas e amortecedores esportivos para um rebaixamento definitivo. O caminho mais direto para deixar o carro no chão.',
+    features: ['Melhor custo para rebaixar', 'Rebaixamento permanente', 'Instalação completa'],
+    icon: 'fixed',
+  },
+];
+---
+
+<section id="suspensoes" class="services">
+  <div class="container services-inner">
+    <div class="services-head">
+      <div class="services-title">
+        <span class="eyebrow">O que fazemos</span>
+        <h2 class="section-title">Três tipos de suspensão. Uma oficina que domina os três.</h2>
+      </div>
+      <p class="services-intro muted">
+        Cada projeto começa entendendo o seu carro e como você usa ele no dia a dia. A partir daí, indicamos o sistema
+        que faz sentido para o seu uso e o seu orçamento.
+      </p>
+    </div>
+    <div class="cards">
+      {
+        services.map((service, i) => (
+          <article class="card">
+            <div class="card-top">
+              <span class="card-number">{String(i + 1).padStart(2, '0')}</span>
+              <svg
+                width="44"
+                height="44"
+                viewBox="0 0 40 40"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.6"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                {service.icon === 'air' && (
+                  <>
+                    <path d="M11 5h18" />
+                    <ellipse cx="20" cy="12" rx="10" ry="4" />
+                    <ellipse cx="20" cy="20" rx="11.5" ry="4" />
+                    <ellipse cx="20" cy="28" rx="10" ry="4" />
+                    <path d="M11 35h18" />
+                  </>
+                )}
+                {service.icon === 'coilover' && (
+                  <>
+                    <path d="M20 2v6" />
+                    <rect x="17" y="8" width="6" height="28" rx="1" />
+                    <path d="M11 9h18" />
+                    <path d="M11 11l18 3-18 3 18 3-18 3 18 3-18 3" />
+                    <path d="M11 29h18" />
+                  </>
+                )}
+                {service.icon === 'fixed' && (
+                  <>
+                    <path d="M10 5h20" />
+                    <path d="M12 7l16 3.5-16 3.5 16 3.5-16 3.5 16 3.5-16 3.5 16 3.5-16 3" />
+                    <path d="M10 35h20" />
+                  </>
+                )}
+              </svg>
+            </div>
+            <h3 class="card-title">{service.title}</h3>
+            <p class="muted">{service.description}</p>
+            <ul class="card-features">
+              {service.features.map((feature) => (
+                <li>
+                  <span aria-hidden="true" class="bullet" />
+                  {feature}
+                </li>
+              ))}
+            </ul>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .services {
+    padding-block: 120px;
+  }
+  .services-inner {
+    display: flex;
+    flex-direction: column;
+    gap: 64px;
+  }
+  .services-head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 24px 64px;
+  }
+  .services-title {
+    flex: 1 1 520px;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .services-intro {
+    flex: 1 1 340px;
+    min-width: 0;
+    max-width: 440px;
+  }
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr));
+    gap: 24px;
+  }
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border-card);
+    border-radius: 4px;
+    padding: 36px;
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+    transition: border-color 0.15s ease;
+  }
+  .card:hover {
+    border-color: var(--red);
+  }
+  .card-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: var(--text);
+  }
+  .card-number {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 20px;
+    color: var(--red-bright);
+    letter-spacing: 0.08em;
+  }
+  .card-title {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 36px;
+    line-height: 1;
+    text-transform: uppercase;
+  }
+  .card-features {
+    list-style: none;
+    margin: 0;
+    padding: 22px 0 0;
+    border-top: 1px solid var(--border-card);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    font-size: 16px;
+    font-weight: 500;
+  }
+  .card-features li {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  @media (max-width: 600px) {
+    .services {
+      padding-block: 80px;
+    }
+    .card {
+      padding: 28px;
+    }
+  }
+</style>

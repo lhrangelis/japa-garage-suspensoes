@@ -1,0 +1,84 @@
+---
+import Button from './Button.astro';
+import Icon from './Icon.astro';
+import { site } from '../data/site';
+---
+
+<section id="rcs" class="rcs">
+  <div class="container rcs-inner">
+    <div class="rcs-copy">
+      <span class="eyebrow">Revendedor RCS Air Components</span>
+      <h2 class="section-title">Componentes RCS para o seu projeto a ar.</h2>
+      <p class="rcs-text muted">
+        Somos revendedores RCS Air Components. Fale com a gente para montar o seu kit de suspensão a ar ou encontrar o
+        componente que falta no seu projeto.
+      </p>
+      <div class="rcs-actions">
+        <Button href={site.whatsapp} icon="whatsapp">Consultar peças RCS</Button>
+        <a class="text-link rcs-link" href={site.rcs.url} target="_blank" rel="noopener noreferrer">
+          {site.rcs.handle}
+          <Icon name="arrow-up-right" size={16} />
+        </a>
+      </div>
+    </div>
+    {/* TODO: substituir pela foto real dos produtos RCS */}
+    <div class="rcs-photo placeholder">[Foto de produtos RCS Air Components]</div>
+  </div>
+</section>
+
+<style>
+  .rcs {
+    background: var(--surface);
+    border-block: 1px solid var(--border);
+    padding-block: 104px;
+  }
+  .rcs-inner {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 56px;
+  }
+  .rcs-copy {
+    flex: 1 1 480px;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+  }
+  .rcs-text {
+    max-width: 520px;
+  }
+  .rcs-actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 14px 28px;
+    margin-top: 8px;
+  }
+  .rcs-link {
+    gap: 8px;
+    color: var(--text);
+  }
+  .rcs-photo {
+    flex: 1 1 400px;
+    min-width: 0;
+    aspect-ratio: 4 / 3;
+    background: repeating-linear-gradient(
+      135deg,
+      var(--surface-2) 0px,
+      var(--surface-2) 14px,
+      #1b1b1f 14px,
+      #1b1b1f 28px
+    );
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    text-align: center;
+    font-size: 18px;
+  }
+  @media (max-width: 600px) {
+    .rcs {
+      padding-block: 80px;
+    }
+  }
+</style>

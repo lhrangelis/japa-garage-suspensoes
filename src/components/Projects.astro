@@ -1,0 +1,75 @@
+---
+import Button from './Button.astro';
+import { site } from '../data/site';
+
+// TODO: substituir pelas fotos reais dos projetos
+const projects = ['Foto de projeto 1', 'Foto de projeto 2', 'Foto de projeto 3', 'Foto de projeto 4'];
+---
+
+<section id="projetos" class="projects">
+  <div class="container projects-inner">
+    <div class="projects-head">
+      <div class="projects-title">
+        <span class="eyebrow">Projetos</span>
+        <h2 class="section-title">Direto da oficina.</h2>
+      </div>
+      <div class="projects-actions">
+        <Button href={site.instagram.url} variant="ghost" icon="instagram">{site.instagram.handle}</Button>
+        <Button href={site.tiktok} variant="ghost" icon="tiktok">TikTok</Button>
+      </div>
+    </div>
+    <div class="gallery">
+      {projects.map((label) => <div class="photo placeholder">[{label}]</div>)}
+    </div>
+  </div>
+</section>
+
+<style>
+  .projects {
+    padding-bottom: 120px;
+  }
+  .projects-inner {
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+  }
+  .projects-head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 24px;
+  }
+  .projects-title {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .projects-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(250px, 100%), 1fr));
+    gap: 16px;
+  }
+  .photo {
+    aspect-ratio: 4 / 5;
+    background: repeating-linear-gradient(
+      135deg,
+      var(--surface) 0px,
+      var(--surface) 14px,
+      var(--surface-2) 14px,
+      var(--surface-2) 28px
+    );
+    align-items: flex-end;
+    font-size: 16px;
+  }
+  @media (max-width: 600px) {
+    .projects {
+      padding-bottom: 80px;
+    }
+  }
+</style>

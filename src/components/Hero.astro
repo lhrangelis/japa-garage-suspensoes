@@ -1,0 +1,148 @@
+---
+import { Image } from 'astro:assets';
+import logo from '../assets/logo.png';
+import Button from './Button.astro';
+import Icon from './Icon.astro';
+import { site } from '../data/site';
+---
+
+<section id="topo" class="hero">
+  <div class="container hero-inner">
+    <div class="hero-copy">
+      <div class="hero-eyebrow eyebrow">
+        <span class="hero-rule"></span>
+        Suspensão a ar · Rosca · Fixa
+      </div>
+      <h1 class="hero-title">Seu carro na altura certa.</h1>
+      <p class="hero-lead">
+        Loja especializada em suspensão a ar, rosca e fixa. Da escolha do kit à instalação e ao acerto final, a Japa
+        Garage cuida do seu projeto — e é revendedora RCS Air Components.
+      </p>
+      <div class="hero-actions">
+        <Button href={site.whatsapp} size="lg" icon="whatsapp">Chamar no WhatsApp</Button>
+        <Button href={site.instagram.url} variant="ghost" size="lg" icon="instagram">Ver projetos</Button>
+      </div>
+      <a class="text-link hero-phone" href={site.phone.tel}>
+        <Icon name="phone" size={18} />
+        {site.phone.display}
+      </a>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-badge">
+        <div class="ring ring-solid"></div>
+        <div class="ring ring-dashed"></div>
+        <Image
+          src={logo}
+          alt="Logo Japa Garage Suspensões: Gol branco rebaixado sobre fumaça vermelha"
+          widths={[320, 470, 720]}
+          sizes="(max-width: 520px) 80vw, 470px"
+          class="hero-logo"
+          loading="eager"
+          fetchpriority="high"
+        />
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero {
+    position: relative;
+    border-bottom: 1px solid var(--border);
+    background:
+      radial-gradient(circle at 78% 52%, rgba(218, 30, 21, 0.28) 0%, rgba(218, 30, 21, 0) 42%),
+      var(--bg);
+  }
+  .hero-inner {
+    padding-block: 96px 104px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 56px;
+  }
+  .hero-copy {
+    flex: 1 1 520px;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+  }
+  .hero-eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .hero-rule {
+    width: 40px;
+    height: 2px;
+    background: var(--red);
+    display: block;
+  }
+  .hero-title {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: clamp(60px, 8.4vw, 112px);
+    line-height: 0.9;
+    letter-spacing: -0.005em;
+    text-transform: uppercase;
+    text-wrap: balance;
+  }
+  .hero-lead {
+    max-width: 540px;
+    font-size: 19px;
+    color: var(--text-soft);
+    text-wrap: pretty;
+  }
+  .hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin-top: 8px;
+  }
+  .hero-phone {
+    align-self: flex-start;
+    color: var(--text-faint);
+    font-size: 16px;
+    font-weight: 500;
+  }
+  .hero-visual {
+    flex: 1 1 380px;
+    min-width: 0;
+    display: flex;
+    justify-content: center;
+    padding: 42px;
+  }
+  .hero-badge {
+    position: relative;
+    width: 100%;
+    max-width: 470px;
+    aspect-ratio: 1 / 1;
+  }
+  .ring {
+    position: absolute;
+    border-radius: 50%;
+  }
+  .ring-solid {
+    inset: -18px;
+    border: 1px solid rgba(218, 30, 21, 0.45);
+  }
+  .ring-dashed {
+    inset: -42px;
+    border: 1px dashed rgba(244, 243, 241, 0.12);
+  }
+  .hero-logo {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    box-shadow: 0 40px 120px rgba(218, 30, 21, 0.35);
+  }
+  @media (max-width: 600px) {
+    .hero-inner {
+      padding-block: 64px 72px;
+    }
+    .hero-visual {
+      padding: 32px;
+    }
+  }
+</style>

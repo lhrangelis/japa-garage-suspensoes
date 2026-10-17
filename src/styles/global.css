@@ -1,0 +1,146 @@
+@import '@fontsource/barlow/400.css';
+@import '@fontsource/barlow/500.css';
+@import '@fontsource/barlow/600.css';
+@import '@fontsource/barlow-condensed/600.css';
+@import '@fontsource/barlow-condensed/700.css';
+@import '@fontsource/barlow-condensed/800.css';
+
+:root {
+  --bg: #0b0b0c;
+  --surface: #131315;
+  --surface-2: #17171a;
+  --border: #1f1f22;
+  --border-card: #26262a;
+  --border-step: #2e2e33;
+  --border-strong: #4a4a50;
+  --text: #f4f3f1;
+  --text-soft: #c9c7c3;
+  --text-muted: #b8b6b2;
+  --text-faint: #a5a3a0;
+  --text-placeholder: #8e8c88;
+  --red: #da1e15;
+  --red-dark: #b9180f;
+  --red-bright: #ff4a3d;
+  --red-light: #ff7a70;
+  --green: #1fa855;
+  --green-dark: #178a45;
+
+  --font-body: 'Barlow', system-ui, sans-serif;
+  --font-display: 'Barlow Condensed', 'Arial Narrow', sans-serif;
+
+  --container: 1200px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 17px;
+  line-height: 1.55;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+img,
+svg {
+  display: block;
+}
+
+a {
+  color: var(--red-bright);
+}
+
+a:hover {
+  color: var(--red-light);
+}
+
+h1,
+h2,
+h3,
+p {
+  margin: 0;
+}
+
+.container {
+  max-width: var(--container);
+  margin: 0 auto;
+  padding-inline: 24px;
+}
+
+.eyebrow {
+  color: var(--red-bright);
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 18px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.section-title {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(42px, 5vw, 64px);
+  line-height: 0.95;
+  text-transform: uppercase;
+  text-wrap: balance;
+}
+
+.muted {
+  color: var(--text-muted);
+  text-wrap: pretty;
+}
+
+.bullet {
+  width: 6px;
+  height: 6px;
+  background: var(--red);
+  display: block;
+  flex: none;
+}
+
+.text-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 44px;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.text-link:hover {
+  color: var(--text) !important;
+}
+
+.placeholder {
+  border: 1px dashed var(--border-strong);
+  border-radius: 4px;
+  display: flex;
+  padding: 20px;
+  color: var(--text-placeholder);
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+:focus-visible {
+  outline: 2px solid var(--red-bright);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
